@@ -1,0 +1,3 @@
+include ':titanium-json-ld'
+include ':app'
+rootProject.name = "titanium-json-ld"
