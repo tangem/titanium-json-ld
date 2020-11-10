@@ -32,6 +32,8 @@ import com.apicatalog.jsonld.json.JsonUtils;
 import com.apicatalog.jsonld.lang.DirectionType;
 import com.apicatalog.jsonld.lang.Keywords;
 
+import static com.apicatalog.JavaOver8Utils.OptionalU.isEmpty;
+
 /**
  * 
  * @see <a href="https://www.w3.org/TR/json-ld11-api/#value-compaction">Value Compaction</a>
@@ -119,7 +121,7 @@ public final class ValueCompaction {
         } else if (activePropertyDefinition.isPresent() 
                         && Keywords.NONE.equals(activePropertyDefinition.get().getTypeMapping())
                         || (value.containsKey(Keywords.TYPE)
-                                && (activePropertyDefinition.isEmpty()
+                                && (isEmpty(activePropertyDefinition)
                                         || !JsonUtils.contains(
                                                 activePropertyDefinition.get().getTypeMapping(),
                                                 value.get(Keywords.TYPE)

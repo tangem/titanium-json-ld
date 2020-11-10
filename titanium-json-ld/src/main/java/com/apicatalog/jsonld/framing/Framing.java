@@ -37,6 +37,8 @@ import com.apicatalog.jsonld.lang.ListObject;
 import com.apicatalog.jsonld.lang.NodeObject;
 import com.apicatalog.jsonld.lang.ValueObject;
 
+import static com.apicatalog.JavaOver8Utils.DataSet.copyListOf;
+
 /**
  * 
  * @see <a href="https://w3c.github.io/json-ld-framing/#framing-algorithm">Framing Algorithm</a>
@@ -176,8 +178,8 @@ public final class Framing {
                     graphState.setEmbedded(false);
                     
                     Framing.with(
-                                graphState, 
-                                List.copyOf(state.getGraphMap().get(id).keySet()), 
+                                graphState,
+                                copyListOf(state.getGraphMap().get(id).keySet()),
                                 subframe, 
                                 output, 
                                 Keywords.GRAPH

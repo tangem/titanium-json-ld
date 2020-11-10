@@ -19,6 +19,8 @@ import java.util.Arrays;
 
 import com.apicatalog.rdf.lang.RdfAlphabet;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 public final class LanguageTag {
 
     private LanguageTag() {
@@ -39,7 +41,7 @@ public final class LanguageTag {
             throw new IllegalArgumentException();
         }
 
-        if (languageTag.isBlank()) {
+        if (isBlank(languageTag)) {
             return false;
         }
 

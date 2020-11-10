@@ -43,6 +43,8 @@ import com.apicatalog.jsonld.loader.DocumentLoaderOptions;
 import com.apicatalog.jsonld.uri.UriResolver;
 import com.apicatalog.jsonld.uri.UriUtils;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 /**
  * @see <a href=
  *      "https://www.w3.org/TR/json-ld11-api/#context-processing-algorithms">Context
@@ -312,7 +314,7 @@ public final class ActiveContextBuilder {
                             throw new JsonLdError(JsonLdErrorCode.INVALID_BASE_IRI);
                         }       
                         
-                    } else if (!valueString.isBlank()) {
+                    } else if (!isBlank(valueString)) {
                         throw new JsonLdError(JsonLdErrorCode.INVALID_BASE_IRI);
                     }
 
@@ -336,7 +338,7 @@ public final class ActiveContextBuilder {
 
                     final String valueString = ((JsonString) value).getString();
 
-                    if (valueString.isBlank() || BlankNode.hasPrefix(valueString) || UriUtils.isURI(valueString)) {
+                    if (isBlank(valueString) || BlankNode.hasPrefix(valueString) || UriUtils.isURI(valueString)) {
 
                         String vocabularyMapping =
                                     result

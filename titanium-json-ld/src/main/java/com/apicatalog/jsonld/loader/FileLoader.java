@@ -29,6 +29,8 @@ import com.apicatalog.jsonld.document.Document;
 import com.apicatalog.jsonld.document.DocumentParser;
 import com.apicatalog.jsonld.http.media.MediaType;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 public final class FileLoader implements DocumentLoader {
 
     @Override
@@ -63,7 +65,7 @@ public final class FileLoader implements DocumentLoader {
 
     private static final Optional<MediaType> detectedContentType(String name) {
         
-        if (name == null || name.isBlank()) {
+        if (name == null || isBlank(name)) {
             return Optional.empty();
         }
         

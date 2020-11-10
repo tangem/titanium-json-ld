@@ -28,6 +28,8 @@ import javax.json.JsonString;
 import javax.json.JsonValue;
 import javax.json.JsonValue.ValueType;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 public final class JsonUtils {
 
     JsonUtils() {
@@ -159,11 +161,11 @@ public final class JsonUtils {
     }
 
     public static boolean isBlankString(JsonValue value) {
-        return isString(value) && ((JsonString) value).getString().isBlank();
+        return isString(value) && isBlank(((JsonString) value).getString());
     }
 
     public static JsonValue toJsonValue(String value) {
-        return value != null && !value.isBlank() 
+        return value != null && !isBlank(value)
                     ? Json.createValue(value)
                     : JsonValue.NULL
                     ;

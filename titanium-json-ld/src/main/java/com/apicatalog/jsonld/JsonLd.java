@@ -31,6 +31,10 @@ import com.apicatalog.jsonld.document.Document;
 import com.apicatalog.jsonld.uri.UriUtils;
 import com.apicatalog.rdf.RdfDataset;
 
+import static com.apicatalog.JavaOver8Utils.OptionalU.isEmpty;
+import static com.apicatalog.JavaOver8Utils.isBlank;
+import static com.apicatalog.JavaOver8Utils.strip;
+
 /**
  * The {@link JsonLd} interface is the high-level programming structure
  * that developers use to access the JSON-LD transformation methods.
@@ -329,11 +333,11 @@ public final class JsonLd {
         
         assertNotNull(location, param);
 
-        if (location.isBlank()) {
+        if (isBlank(location)) {
             throw new IllegalArgumentException("'" + param + "' is blank string.");
         }
         
-        if (UriUtils.isNotAbsoluteUri(location.strip())) {
+        if (UriUtils.isNotAbsoluteUri(strip(location))) {
             throw new IllegalArgumentException("'" + param + "' is not an absolute URI [" + location + "].");
         }
     }
@@ -351,7 +355,7 @@ public final class JsonLd {
         
         assertNotNull(document, param);
 
-        if (document.getJsonContent().isEmpty()) {
+        if (isEmpty(document.getJsonContent())) {
             throw new IllegalArgumentException("'" + param + "' is not not JSON document but [" + document.getContentType() + "].");
         }
     }
@@ -360,7 +364,7 @@ public final class JsonLd {
         
         assertNotNull(document, param);
         
-        if (document.getRdfContent().isEmpty()) {
+        if (isEmpty(document.getRdfContent())) {
             throw new IllegalArgumentException("'" + param + "' is not not RDF document but [" + document.getContentType() + "].");
         }
     }

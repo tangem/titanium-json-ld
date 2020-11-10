@@ -40,6 +40,8 @@ import com.apicatalog.jsonld.lang.LanguageTag;
 import com.apicatalog.jsonld.lang.Version;
 import com.apicatalog.jsonld.uri.UriUtils;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 /**
  * 
  * @see <a href=
@@ -105,7 +107,7 @@ public final class TermDefinitionBuilder {
 
     public void create(final String term) throws JsonLdError {
 
-        if (term.isBlank()) {
+        if (isBlank(term)) {
             throw new JsonLdError(JsonLdErrorCode.INVALID_TERM_DEFINITION);
         }
 

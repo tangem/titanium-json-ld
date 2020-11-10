@@ -46,6 +46,8 @@ import com.apicatalog.rdf.RdfResource;
 import com.apicatalog.rdf.RdfTriple;
 import com.apicatalog.rdf.lang.RdfConstants;
 
+import static com.apicatalog.JavaOver8Utils.OptionalU.isEmpty;
+
 public final class RdfToJsonld {
 
     // required
@@ -142,7 +144,7 @@ public final class RdfToJsonld {
                     
                     graphMap.remove(graphName, cl);
                     
-                    if (clNodeValue.isEmpty()) {
+                    if (isEmpty(clNodeValue)) {
                         continue;
                     }
                     
@@ -271,7 +273,7 @@ public final class RdfToJsonld {
                     // 6.4.3.4.
                     final Optional<Map<String, JsonValue>> nextNode = graphMap.get(usage.graphName, usage.subject);
 
-                    if (nextNode.isEmpty()) {
+                    if (isEmpty(nextNode)) {
                         break;
                     }
                     

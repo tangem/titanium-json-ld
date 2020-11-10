@@ -18,15 +18,17 @@ package com.apicatalog.jsonld.context;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.json.JsonString;
 import javax.json.JsonValue;
 
+import com.apicatalog.JavaOver8Utils;
 import com.apicatalog.jsonld.json.JsonUtils;
 import com.apicatalog.jsonld.lang.DirectionType;
 import com.apicatalog.jsonld.lang.Keywords;
+
+import static com.apicatalog.JavaOver8Utils.OptionalU.isEmpty;
 
 /**
  * 
@@ -59,14 +61,14 @@ public final class InverseContextBuilder {
         for (final String termName : activeContext.getTerms().stream().sorted().collect(Collectors.toList())) {
         
             // 3.1.
-            if (activeContext.getTerm(termName).isEmpty()) {
+            if (isEmpty(activeContext.getTerm(termName))) {
                 continue;
             }
 
             // 3.3.
             final Optional<String> variable = activeContext.getTerm(termName).map(TermDefinition::getUriMapping);
             
-            if (variable.isEmpty()) {
+            if (isEmpty(variable)) {
                 continue;
             }
             
@@ -79,7 +81,7 @@ public final class InverseContextBuilder {
 
             // 3.2.
             final String container = containerMapping
-                                            .filter(Predicate.not(Collection::isEmpty))
+                                            .filter(JavaOver8Utils.PredicateU.not(Collection::isEmpty))
                                             .orElse(Arrays.asList(Keywords.NONE))
                                             .stream()
                                             .sorted()

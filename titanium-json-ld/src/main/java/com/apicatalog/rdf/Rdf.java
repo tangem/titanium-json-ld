@@ -32,6 +32,8 @@ import com.apicatalog.rdf.io.error.UnsupportedContentException;
 import com.apicatalog.rdf.lang.XsdConstants;
 import com.apicatalog.rdf.spi.RdfProvider;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 public final class Rdf {
 
     private Rdf() {
@@ -192,7 +194,7 @@ public final class Rdf {
     
     public static RdfResource createBlankNode(final String value) {
         
-        if (value == null || value.isBlank()) {
+        if (value == null || isBlank(value)) {
             throw new IllegalArgumentException();
         }
 
@@ -201,7 +203,7 @@ public final class Rdf {
     
     public static RdfResource createIRI(final String value) {
         
-        if (value == null || value.isBlank()) {
+        if (value == null || isBlank(value)) {
             throw new IllegalArgumentException();
         }
 

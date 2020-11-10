@@ -29,6 +29,9 @@ import com.apicatalog.jsonld.http.HttpAlphabet;
 import com.apicatalog.jsonld.http.media.MediaType;
 import com.apicatalog.jsonld.uri.UriResolver;
 
+import static com.apicatalog.JavaOver8Utils.strip;
+import static com.apicatalog.JavaOver8Utils.stripTrailing;
+
 /**
  * 
  * @see <a href="https://tools.ietf.org/html/rfc8288#appendix-B">Appendix B.  Algorithms for Parsing Link Header Fields</a>
@@ -125,13 +128,13 @@ final class LinkHeaderParser {
         case PARAM_NAME:
         case PARAM_NAME_END:
             if (valueBuilder.length() > 0) {
-                attributeName = valueBuilder.toString().stripTrailing();
+                attributeName = stripTrailing(valueBuilder.toString());
             }
             break;
                         
         case LITERAL_VALUE:
             if (valueBuilder.length() > 0) {
-                attributeValue = valueBuilder.toString().stripTrailing();
+                attributeValue = stripTrailing(valueBuilder.toString());
             }
             break;
             
@@ -156,11 +159,11 @@ final class LinkHeaderParser {
             MediaType type = null;
             
             if (attributes.containsKey(REL) && attributes.get(REL) != null) {
-                rel = new HashSet<>(Arrays.asList(attributes.get(REL).get(0).value().strip().split("[\\s\\t]+")));
+                rel = new HashSet<>(Arrays.asList(strip(attributes.get(REL).get(0).value()).split("[\\s\\t]+")));
                 attributes.remove(REL);
             }
             if (attributes.containsKey(ANCHOR) && attributes.get(ANCHOR) != null) {
-                context = URI.create(UriResolver.resolve(baseUri, attributes.get(ANCHOR).get(0).value().strip()));
+                context = URI.create(UriResolver.resolve(baseUri, strip(attributes.get(ANCHOR).get(0).value())));
                 attributes.remove(ANCHOR);
             }
             if (attributes.containsKey(TYPE) && attributes.get(TYPE) != null) {
@@ -229,7 +232,7 @@ final class LinkHeaderParser {
             }
             return;
         }        
-        targetUri = URI.create(UriResolver.resolve(baseUri, valueBuilder.toString().stripTrailing()));
+        targetUri = URI.create(UriResolver.resolve(baseUri, stripTrailing(valueBuilder.toString())));
         state = State.PARAMS;
     }
     

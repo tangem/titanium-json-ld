@@ -17,6 +17,8 @@ package com.apicatalog.jsonld.http.media;
 
 import java.util.Objects;
 
+import static com.apicatalog.JavaOver8Utils.isBlank;
+
 /**
  * 
  * @see <a href="https://tools.ietf.org/html/rfc7231#section-3.1.1.1">Media Type</a>
@@ -91,7 +93,7 @@ public final class MediaType {
         if (value == null) {
             throw new IllegalArgumentException();
         }
-        if (value.isBlank()) {
+        if (isBlank(value)) {
             return null;
         }
         return new MediaTypeParser(value).parse();
