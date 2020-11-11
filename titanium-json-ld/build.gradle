@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'kotlin'
 }
+apply from: '../upload.gradle'
 
 compileKotlin {
     kotlinOptions {
