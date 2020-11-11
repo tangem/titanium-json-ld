@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://json-ld.org/contexts/person.jsonld"
+  ],
+  "id": "did:ethr:0x9db1BAEca1b8174d24C8A3812D1a4C90b8588e61",
+  "type": [
+    "VerifiableCredential",
+    "TangemPersonCredential"
+  ],
+  "issuer": "did:ethr:0x91901762C7d20d2894396c189d744d83aFa118f4",
+  "issuanceDate": "2020-05-17T21:30:29.725Z",
+  "credentialSubject": {
+    "id": "did:key:z6MktCRXGcSbjNkhzB8xxaEuCL3uWa2s4XXDz43knoReAVSV#z6MktCRXGcSbjNkhzB8xxaEuCL3uWa2s4XXDz43knoReAVSV",
+    "dln": "1234-56-7890",
+    "name": "Denis Baturin",
+    "gender": "male",
+    "born": "1992-02-03",
+    "photoSha256": "GN/6og9r/7SQcYj+RTYkibiQY2Y77zvCKMn1K9/Xwgc="
+  },
+  "proof": {
+    "type": "EcdsaSecp256k1Signature2019",
+    "created": "2020-05-17T21:32:06Z",
+    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..QgbRWT8w1LJet_KFofNfz_TVs27z4pwdPwUHhXYUaFlKicBQp6U1H5Kx-mST6uFvIyOqrYTJifDijZbtAfi0MA",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:ethr:0x91901762C7d20d2894396c189d744d83aFa118f4"
+  }
+}
