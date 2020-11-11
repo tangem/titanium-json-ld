@@ -27,8 +27,8 @@ public final class SchemeRouter implements DocumentLoader {
 
     private static final DocumentLoader INSTANCE = 
                                 new SchemeRouter()
-                                        .set("http", HttpLoader.defaultInstance())
-                                        .set("https", HttpLoader.defaultInstance())
+                                        .set("http", HttpLoader.Companion.defaultInstance())
+                                        .set("https", HttpLoader.Companion.defaultInstance())
                                         .set("file", new FileLoader());
     
     private final Map<String, DocumentLoader> loaders;
