@@ -32,10 +32,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d("testExample", result.toList().toString())
                 val normalized = RdfNormalize.normalize(result)
 
-                val rdfDocument = RdfDocument.of(normalized)
-
                 var normalizedString = ""
-                normalized.toList().forEach { normalizedString = normalizedString + NQuadSerializer.write(it) }
+                normalized.toList().forEach { normalizedString += NQuadSerializer.write(it) }
                 normalizedString.removeSuffix("\n") // TODO: check if needed
 
                 print(normalizedString)

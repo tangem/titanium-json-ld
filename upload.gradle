@@ -26,6 +26,9 @@ task uploadSnapshot(type: Upload) {
                 authentication(userName: "developer", password: "smartcash987")
             }
             pom.version = "$prefix-SNAPSHOT"
+            pom.groupId = artifactGroup
+            pom.artifactId = artifactId
+            pom.packaging = artifactPackaging
         }
     }
 }
