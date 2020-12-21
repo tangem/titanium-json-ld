@@ -26,15 +26,11 @@ class MainActivity : AppCompatActivity() {
             handler.post {
                 val jsonInputStream = assets.open("test_json_ld.json")
                 val document = JsonDocument.of(jsonInputStream)
-//                val result = JsonLd.expand(document)
-//                val result = JsonLd.flatten(document)
                 val result = JsonLd.toRdf(document).get()
-                Log.d("testExample", result.toList().toString())
                 val normalized = RdfNormalize.normalize(result)
 
                 var normalizedString = ""
                 normalized.toList().forEach { normalizedString += NQuadSerializer.write(it) }
-                normalizedString.removeSuffix("\n") // TODO: check if needed
 
                 print(normalizedString)
 
